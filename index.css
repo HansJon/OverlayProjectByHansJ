@@ -1,0 +1,114 @@
+body {
+	text-align: center;
+}
+
+body .formClass{
+	font-family: Helvetica;
+	font-size: 4em;
+}
+
+.main {
+	background-color: blue;
+
+	width: 300px;
+	height: 300px;
+}
+
+#OverlayContainer {
+	-webkit-transition: opacity 2s;
+    transition: opacity 2s;
+/*
+    This does not affect anything
+    becuse we are changing classes
+    not modifying it
+*/
+}
+
+.OverlayBoxInactive {
+	background-color: rgba(0, 0, 0, 0);
+
+	z-index: -999;
+
+	position: absolute;
+	width: 0%;
+	height: 0%;
+
+	top: 0px;
+	left: 0px;
+
+	-webkit-animation-name: dropdown; /* Chrome, Safari, Opera */
+	-webkit-animation-duration: 3s;
+	animation-name: dropdown;
+	animation-duration: 3s;
+}
+
+.OverlayBoxActive {
+	background-color: rgba(0, 0, 0, 0.85);
+
+	z-index: 900;
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	top: 0px;
+	left: 0px;
+}
+
+.formClass {
+	z-index: 901;
+/*
+	position: absolute;
+	width: 60%;
+	height: 60%;
+
+	top: 50px;
+	left: 20%;
+*/
+
+/* Completely centered */
+/*
+	width: 70%;
+	height: 700px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -35%;
+	margin-top: -350px;
+*/
+
+/* Perfectly centered responsive */
+	margin: auto;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+
+	background-color: #2E2E2E;
+	border-radius: 10px;
+}
+
+@-webkit-keyframes dropdown {
+	from {top: 50px;}
+	to {top: -500px;}
+}
+
+@keyframes dropdown {
+	from {top: 50px;}
+	to {top: -500px;}
+}
+
+.noClass {
+	z-index: 0;
+	width: 0%;
+	height: 0%;
+	top: 0px;
+	left: 0px;
+}
+
+/* TASKS TO DO:
+~ 	Change js code to change CSS values
+	directly within js instead of using
+	another class for the inactive element
+	and support the animation upon exit.
+*/

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Design - Overlay Box</title>
+
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div id="OverlayContainer" class="OverlayBoxInactive" onclick="CloseForm()"></div>
+	<div class="main"></div>
+
+	<fieldset>
+		<form>
+			<!-- <button onclick="ActivateOverlay(); return false">Overlay</button> -->
+			<input type="button" onclick="ActivateOverlay(); return false" value="Open form"></input>
+		</form>
+	</fieldset>
+
+	<div id="formContainer"></div>
+
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
