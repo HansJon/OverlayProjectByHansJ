@@ -6,12 +6,18 @@ function ActivateOverlay() {
 	var overlayBox = document.getElementById("OverlayContainer");
 	var elementClassName = overlayBox.className;
 
-	overlayBox.setAttribute("class", "OverlayBoxActive");
+	//overlayBox.setAttribute("class", "OverlayBoxActive");
+	overlayBox.style.zIndex = "900";
+	overlayBox.style.width = "100%";
+	overlayBox.style.height = "100%";
+	overlayBox.style.opacity = "0.85";
 
 	form = document.createElement("div");
 	form.innerHTML = "Hello";
 	form.style.color = "red";
-	form.setAttribute("class", "formClass");
+	form.setAttribute("class", "formClass animationIn");
+
+	//form.style.opacity = "0";
 
 	var container = document.getElementById("formContainer");
 
@@ -23,9 +29,19 @@ function ActivateOverlay() {
 function CloseForm() {
 
 	var overlayBox = document.getElementById("OverlayContainer");
-	overlayBox.setAttribute("class", "OverlayBoxInactive");
+	
+	overlayBox.style.opacity = "0";
+	form.setAttribute("class", "formClass animationOut");
 
-	form.parentNode.removeChild(form);
+	setTimeout(function () {
+		form.parentNode.removeChild(form);
+	}, 1500);
+	formOpen = false;
+
+	// Wait transition time as argument so overlay fades correctly
+	setTimeout(function () {
+        overlayBox.style.zIndex = "-999";
+    }, 1500);
 
 	if (formOpen) {
 		//Close the form. with animation moving out of the screen (down).

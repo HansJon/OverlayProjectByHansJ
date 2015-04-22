@@ -15,8 +15,6 @@ body .formClass{
 }
 
 #OverlayContainer {
-	-webkit-transition: opacity 2s;
-    transition: opacity 2s;
 /*
     This does not affect anything
     becuse we are changing classes
@@ -24,8 +22,12 @@ body .formClass{
 */
 }
 
-.OverlayBoxInactive {
-	background-color: rgba(0, 0, 0, 0);
+.OverlayBox {
+	-webkit-transition: opacity 3s;
+    transition: opacity 3s;
+
+	background-color: rgba(0, 0, 0, 1);
+	opacity: 0;
 
 	z-index: -999;
 
@@ -35,67 +37,70 @@ body .formClass{
 
 	top: 0px;
 	left: 0px;
-
-	-webkit-animation-name: dropdown; /* Chrome, Safari, Opera */
+/*
+	-webkit-animation-name: dropdown;
 	-webkit-animation-duration: 3s;
 	animation-name: dropdown;
 	animation-duration: 3s;
+*/
 }
 
-.OverlayBoxActive {
-	background-color: rgba(0, 0, 0, 0.85);
+.animationIn
+{
+	-webkit-animation-name: dropdownEnter;
+	-webkit-animation-duration: 1.5s;
+	animation-name: dropdownEnter;
+	animation-duration: 1.5s;
 
-	z-index: 900;
+	-webkit-animation-timing-function: ease-out; /* Chrome, Safari, Opera */
+    animation-timing-function: ease-out;
+}
 
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.animationOut
+{
+	-webkit-animation-name: dropdownExit;
+	-webkit-animation-duration: 1.5s;
+	animation-name: dropdownExit;
+	animation-duration: 1.5s;
 
-	top: 0px;
-	left: 0px;
+	-webkit-animation-timing-function: ease-in; /* Chrome, Safari, Opera */
+    animation-timing-function: ease-in;
 }
 
 .formClass {
 	z-index: 901;
-/*
-	position: absolute;
-	width: 60%;
-	height: 60%;
 
-	top: 50px;
-	left: 20%;
-*/
-
-/* Completely centered */
-/*
-	width: 70%;
-	height: 700px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -35%;
-	margin-top: -350px;
-*/
-
-/* Perfectly centered responsive */
 	margin: auto;
-	width: 30%;
-	height: 30%;
+	width: 50%;
+	height: 50%;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 
-	background-color: #2E2E2E;
+	background-color: #5E5E5E;
 	border-radius: 10px;
+
+	animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes dropdown {
-	from {top: 50px;}
-	to {top: -500px;}
+@-webkit-keyframes dropdownEnter {
+	from {top: -150%;}
+	to {top: 0; bottom: 0;}
 }
 
-@keyframes dropdown {
-	from {top: 50px;}
-	to {top: -500px;}
+@keyframes dropdownEnter {
+	from {top: -150%;}
+	to {top: 0; bottom: 0;}
+}
+
+
+@-webkit-keyframes dropdownExit {
+	from {top: 0; bottom: 0;}
+	to {top: -150%;}
+}
+
+@keyframes dropdownExit {
+	from {top: 0; bottom: 0;}
+	to {top: -150%;}
 }
 
 .noClass {
